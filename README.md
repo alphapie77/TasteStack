@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![React](https://img.shields.io/badge/React-18.3.1-blue.svg)](https://reactjs.org/)
 [![Django](https://img.shields.io/badge/Django-5.2.1-green.svg)](https://www.djangoproject.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.6.2-blue.svg)](https://www.typescriptlang.org/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Frontend Status](https://img.shields.io/badge/Frontend-Live-brightgreen.svg)](https://taste-stack.vercel.app/)
 [![Backend Status](https://img.shields.io/badge/Backend-Live-brightgreen.svg)](https://shksabbir7.pythonanywhere.com/)
 [![API Status](https://img.shields.io/badge/API-Working-success.svg)](https://shksabbir7.pythonanywhere.com/api/recipes/)
