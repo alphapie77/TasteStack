@@ -215,7 +215,7 @@ const PublicProfilePage = () => {
 
           {/* Stats Section */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-white/20">
+            <div className={`${isDark ? 'bg-gray-800/80 border-gray-700/20' : 'bg-white/80 border-white/20'} backdrop-blur-sm rounded-2xl shadow-lg p-6 border`}>
               <div className="flex items-center">
                 <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-r from-violet-500 to-purple-500 flex items-center justify-center">
                   <svg className="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -223,8 +223,8 @@ const PublicProfilePage = () => {
                   </svg>
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-500">Recipes</p>
-                  <p className="text-2xl font-bold text-gray-900">{profile.stats.total_recipes}</p>
+                  <p className={`text-sm font-medium ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Recipes</p>
+                  <p className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{profile.stats.total_recipes}</p>
                 </div>
               </div>
             </div>
@@ -272,12 +272,12 @@ const PublicProfilePage = () => {
       </div>
 
       {/* Recent Recipes Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-gray-50">
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className={`text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} mb-4`}>
             Recent <span className="text-violet-600">Recipes</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'} max-w-2xl mx-auto`}>
             Discover the latest creations from {profile.user.first_name || profile.user.username}
           </p>
         </div>
@@ -286,7 +286,7 @@ const PublicProfilePage = () => {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {profile.recent_recipes.map((recipe) => (
               <Link key={recipe.id} to={`/recipes/${recipe.id}`} className="group block">
-                <div className="bg-white rounded-3xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl border border-gray-100">
+                <div className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'} rounded-3xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl border`}>
                   <div className="relative overflow-hidden">
                     {recipe.image ? (
                       <img
@@ -318,10 +318,10 @@ const PublicProfilePage = () => {
                   </div>
                   
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-violet-600 transition-colors duration-300">
+                    <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} mb-2 group-hover:text-violet-600 transition-colors duration-300`}>
                       {recipe.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-2">
+                    <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'} mb-4 line-clamp-2`}>
                       {recipe.description?.substring(0, 100) || 'Delicious recipe waiting for you to discover'}...
                     </p>
                     
@@ -330,7 +330,7 @@ const PublicProfilePage = () => {
                         <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-sm text-gray-500">{recipe.likes_count || 0}</span>
+                        <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{recipe.likes_count || 0}</span>
                       </div>
                       
                       <div className="flex items-center text-violet-600 group-hover:text-violet-700 font-medium">
@@ -344,7 +344,7 @@ const PublicProfilePage = () => {
                     {/* Recipe details */}
                     <div className="mt-4 pt-4 border-t border-gray-100">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-500">
+                        <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                           Prep: {recipe.prep_time || 0} mins | Cook: {recipe.cook_time || 0} mins
                         </span>
                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-800">
@@ -362,8 +362,8 @@ const PublicProfilePage = () => {
             <svg className="mx-auto h-24 w-24 text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
-            <h3 className="mt-4 text-xl font-bold text-gray-900">No recipes yet</h3>
-            <p className="mt-2 text-gray-600 max-w-md mx-auto">
+            <h3 className={`mt-4 text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>No recipes yet</h3>
+            <p className={`mt-2 ${isDark ? 'text-gray-300' : 'text-gray-600'} max-w-md mx-auto`}>
               {profile.user.first_name || profile.user.username} hasn't shared any recipes yet.
             </p>
           </div>

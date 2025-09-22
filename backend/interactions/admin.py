@@ -1,3 +1,2 @@
-from django.contrib import admin
-
-# Register your models here.
+# Admin configurations are handled in accounts/admin.py
+# This keeps all admin configurations centralized
