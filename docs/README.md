@@ -1,184 +1,152 @@
 # 📚 TasteStack Documentation
 
-Welcome to the comprehensive documentation for TasteStack - A Recipe Sharing Platform.
+Welcome to the comprehensive documentation for TasteStack - a modern recipe sharing platform built with Django and React.
 
 ## 📖 Documentation Structure
 
-### 🚀 Getting Started
-- [Installation Guide](setup/INSTALLATION_GUIDE.md) - Complete setup instructions
-- [Quick Start](QUICK_START.md) - Get running in 5 minutes
-- [Project Structure](PROJECT_STRUCTURE.md) - Project organization
+### 🚀 [Setup & Installation](./setup/)
+Get started with TasteStack quickly and efficiently.
 
-### 🏗️ Architecture & Development
-- [Backend Guide](backend/BACKEND_GUIDE.md) - Django REST API documentation
-- [Django ORM Guide](DJANGO_ORM_GUIDE.md) - Database operations
-- [React Guide](REACT_GUIDE.md) - Frontend development
-- [API Documentation](api/API_REFERENCE.md) - Complete API reference
+- **[Installation Guide](./setup/INSTALLATION_GUIDE.md)** - Complete setup instructions for development environment
+- **[Quick Start](./setup/QUICK_START.md)** - Fast track to get TasteStack running locally
 
-### 🔧 Development Resources
-- [Complete Tutorial](COMPLETE_TUTORIAL.md) - Step-by-step guide
-- [SQLite Guide](SQLITE_GUIDE.md) - Database setup
-- [Tutorial Index](TUTORIAL_INDEX.md) - Learning path
+### 🏗️ [Backend Development](./backend/)
+Everything you need to know about the Django backend.
 
-### 🚀 Deployment
-- [Deployment Guide](DEPLOYMENT_GUIDE.md) - Production deployment
-- [Frontend Deployment](FRONTEND_DEPLOYMENT.md) - Frontend hosting
-- [Deployment Status](DEPLOYMENT_STATUS.md) - Current status
+- **[Backend Guide](./backend/BACKEND_GUIDE.md)** - TasteStack-specific backend documentation
+- **[Django Project Guide](./backend/DJANGO_PROJECT_GUIDE.md)** - General Django development guide
 
-### 👥 User Documentation
-- [User Manual](USER_MANUAL.md) - End-user guide
-- [Project Report](PROJECT_REPORT.md) - Technical overview
+### ⚛️ [Frontend Development](./frontend/)
+React frontend development resources.
 
-### 📁 Organized Structure
-Documentation is now organized into logical folders:
-- **setup/**: Installation and setup guides
-- **backend/**: Backend development documentation  
-- **api/**: API reference and examples
-- **deployment/**: Production deployment guides
-- **architecture/**: System design and structure
-- **user/**: End-user documentation
-- **Root level**: Core tutorial and reference files
+- **[React Guide](./frontend/REACT_GUIDE.md)** - Complete React development guide for TasteStack
 
-## 📋 Quick Navigation
+### 🔧 [Development Resources](./development/)
+Comprehensive learning materials and tutorials.
 
-### For Developers
-1. Start with [Installation Guide](setup/INSTALLATION_GUIDE.md)
-2. Read [Backend Guide](backend/BACKEND_GUIDE.md)
-3. Check [API Documentation](api/API_REFERENCE.md)
-4. Follow [Complete Tutorial](COMPLETE_TUTORIAL.md)
+- **[Complete Tutorial](./development/COMPLETE_TUTORIAL.md)** - Step-by-step full-stack development guide
+- **[Django ORM Guide](./development/DJANGO_ORM_GUIDE.md)** - Master Django's database layer
+- **[SQLite Guide](./development/SQLITE_GUIDE.md)** - Database fundamentals and optimization
+- **[Django Development Guide](./development/DJANGO_DEVELOPMENT_GUIDE.md)** - Advanced Django concepts
+- **[Tutorial Index](./development/TUTORIAL_INDEX.md)** - Learning path and exercise guide
 
-### For Deployers
-1. Review [Deployment Guide](DEPLOYMENT_GUIDE.md)
-2. Check [Frontend Deployment](FRONTEND_DEPLOYMENT.md)
-3. Monitor [Deployment Status](DEPLOYMENT_STATUS.md)
+### 🌐 [API Documentation](./api/)
+RESTful API reference and examples.
 
-### For Users
-1. Read [User Manual](USER_MANUAL.md)
-2. Check [Quick Start](QUICK_START.md) for basics
+- **[API Reference](./api/API_REFERENCE.md)** - Complete API documentation with examples
 
-## 📖 Document Summaries
+### 🏛️ [Architecture & Design](./architecture/)
+System architecture and project overview.
 
-### User Manual (45+ pages)
-Comprehensive guide covering all user-facing features of TasteStack:
-- **Getting Started**: Account creation, login process, system requirements
-- **Navigation**: Understanding the interface and main features
-- **Recipe Discovery**: Browsing, searching, and filtering recipes
-- **Recipe Creation**: Step-by-step guide to sharing recipes
-- **Social Features**: Rating, commenting, following users
-- **Dashboard**: Personal recipe management and analytics
-- **Mobile Usage**: Mobile-optimized features and accessibility
-- **Troubleshooting**: Common issues and solutions
+- **[Project Structure](./architecture/PROJECT_STRUCTURE.md)** - Codebase organization and architecture
+- **[Project Report](./architecture/PROJECT_REPORT.md)** - Comprehensive project analysis and features
 
-### Installation Guide (30+ pages)
-Complete technical setup guide for all stakeholders:
-- **Quick Start**: Get running in minutes
-- **System Requirements**: Hardware and software prerequisites
-- **Development Setup**: Detailed development environment configuration
-- **Production Deployment**: Production-ready deployment guide
-- **Database Setup**: SQLite, PostgreSQL, and MySQL configuration
-- **Advanced Configuration**: Docker, CI/CD, monitoring
-- **Troubleshooting**: Common technical issues and solutions
+### 🚀 [Deployment](./deployment/)
+Production deployment guides and status.
 
-### Project Report (35+ pages)
-Comprehensive technical and business documentation:
-- **Project Summary**: Problem statement, objectives, target audience
-- **Technology Stack**: Detailed technology choices and rationale
-- **Application Usage**: Step-by-step feature walkthrough
-- **Architecture**: System design and implementation details
-- **Quality Assurance**: Testing strategies and quality measures
-- **Future Enhancements**: Roadmap and planned features
+- **[Deployment Guide](./deployment/DEPLOYMENT_GUIDE.md)** - General deployment instructions
+- **[Frontend Deployment](./deployment/FRONTEND_DEPLOYMENT.md)** - Frontend-specific deployment
+- **[Deployment Status](./deployment/DEPLOYMENT_STATUS.md)** - Current deployment status and URLs
 
-## 🔧 Development Resources
+### 👥 [User Documentation](./user/)
+End-user guides and manuals.
 
-### Quick Commands
-```bash
-# Backend development
-cd backend
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
+- **[User Manual](./user/USER_MANUAL.md)** - Complete user guide for the platform
 
-# Frontend development
-cd frontend
-npm install
-npm start
-```
+### 🔧 [Troubleshooting](./troubleshooting/)
+Common issues and solutions.
 
-### Useful Links
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000/api/
-- **Admin Interface**: http://localhost:8000/admin/
+- *Documentation coming soon*
 
-### Project Structure
-```
-TasteStack/
-├── backend/                 # Django backend
-├── frontend/               # React frontend
-├── docs/                   # Documentation (you are here)
-│   ├── README.md          # This file
-│   ├── USER_MANUAL.md     # User guide
-│   ├── INSTALLATION_GUIDE.md # Technical setup
-│   └── PROJECT_REPORT.md  # Complete project documentation
-├── .gitignore             # Git ignore rules
-└── README.md              # Main project README
-```
+## 🎯 Quick Navigation
 
-## 📋 Document Status
+### For New Developers
+1. **Start Here**: [Installation Guide](./setup/INSTALLATION_GUIDE.md)
+2. **Learn the Basics**: [Complete Tutorial](./development/COMPLETE_TUTORIAL.md)
+3. **Understand the Architecture**: [Project Structure](./architecture/PROJECT_STRUCTURE.md)
 
-| Document | Status | Last Updated | Completeness |
-|----------|--------|--------------|--------------|
-| User Manual | ✅ Complete | Current | 100% |
-| Installation Guide | ✅ Complete | Current | 100% |
-| Project Report | ✅ Complete | Current | 100% |
-| Main README | ✅ Complete | Current | 100% |
+### For Backend Developers
+1. **Backend Setup**: [Backend Guide](./backend/BACKEND_GUIDE.md)
+2. **Database Mastery**: [Django ORM Guide](./development/DJANGO_ORM_GUIDE.md)
+3. **API Reference**: [API Documentation](./api/API_REFERENCE.md)
 
-## 🤝 Contributing to Documentation
+### For Frontend Developers
+1. **React Development**: [React Guide](./frontend/REACT_GUIDE.md)
+2. **API Integration**: [API Reference](./api/API_REFERENCE.md)
+3. **Deployment**: [Frontend Deployment](./deployment/FRONTEND_DEPLOYMENT.md)
 
-### Documentation Standards
-- Use clear, concise language
-- Include code examples where appropriate
-- Maintain consistent formatting and structure
-- Update documentation with feature changes
-- Include screenshots for UI-related instructions
+### For DevOps/Deployment
+1. **Deployment Guide**: [Deployment Documentation](./deployment/DEPLOYMENT_GUIDE.md)
+2. **Current Status**: [Deployment Status](./deployment/DEPLOYMENT_STATUS.md)
+3. **Architecture**: [Project Structure](./architecture/PROJECT_STRUCTURE.md)
 
-### Updating Documentation
+### For End Users
+1. **User Guide**: [User Manual](./user/USER_MANUAL.md)
+2. **Getting Started**: [Quick Start](./setup/QUICK_START.md)
+
+## 🔍 What's TasteStack?
+
+TasteStack is a modern, full-stack recipe sharing platform that connects food enthusiasts worldwide. Built with:
+
+- **Backend**: Django REST Framework with JWT authentication
+- **Frontend**: React with Tailwind CSS
+- **Database**: SQLite (development) / PostgreSQL (production)
+- **Features**: Recipe management, social interactions, user profiles, search & filtering
+
+## 🌟 Key Features
+
+- ✅ **User Authentication** - Secure registration and login system
+- ✅ **Recipe Management** - Create, edit, and organize recipes
+- ✅ **Social Features** - Like, comment, and rate recipes
+- ✅ **Search & Discovery** - Advanced filtering and search capabilities
+- ✅ **Responsive Design** - Works on all devices
+- ✅ **Media Management** - Image upload and optimization
+- ✅ **Real-time Statistics** - User engagement metrics
+
+## 🚀 Live Demo
+
+- **Backend API**: https://shksabbir7.pythonanywhere.com/
+- **Admin Panel**: https://shksabbir7.pythonanywhere.com/admin/
+- **GitHub Repository**: https://github.com/alphapie77/TasteStack
+
+## 📋 Documentation Status
+
+| Section | Status | Last Updated |
+|---------|--------|--------------|
+| Setup & Installation | ✅ Complete | Recent |
+| Backend Development | ✅ Complete | Recent |
+| Frontend Development | ✅ Complete | Recent |
+| Development Resources | ✅ Complete | Recent |
+| API Documentation | ✅ Complete | Recent |
+| Architecture | ✅ Complete | Recent |
+| Deployment | ✅ Complete | Recent |
+| User Documentation | ✅ Complete | Recent |
+| Troubleshooting | 🔄 In Progress | - |
+
+## 🤝 Contributing
+
+Found an issue with the documentation? Want to add more examples or improve existing content?
+
 1. Fork the repository
-2. Update relevant documentation files
-3. Test all code examples and instructions
-4. Submit a pull request with description of changes
-
-### Documentation Feedback
-Found an error or have suggestions for improvement?
-- Create an issue in the project repository
-- Include specific page references and suggested changes
-- Indicate whether the issue is technical accuracy or clarity
+2. Create a feature branch
+3. Make your improvements
+4. Submit a pull request
 
 ## 📞 Support
 
-### Getting Help
-- **User Questions**: Check [User Manual](USER_MANUAL.md) first
-- **Technical Issues**: See [Installation Guide](INSTALLATION_GUIDE.md) troubleshooting
-- **Development Help**: Review [Project Report](PROJECT_REPORT.md) for technical details
-- **Community Support**: Engage with other users through comments and discussions
+Need help? Here are your options:
 
-### Contact Information
-- **Project Repository**: [Link to repository]
-- **Issue Tracker**: [Link to issues]
-- **Discussions**: [Link to discussions]
+1. **Check the Documentation** - Most questions are answered here
+2. **Review the Troubleshooting Section** - Common issues and solutions
+3. **Check the GitHub Issues** - See if your issue has been reported
+4. **Create a New Issue** - For bugs or feature requests
 
----
+## 📝 License
 
-## 🎯 Documentation Goals
-
-This documentation aims to provide:
-- **Complete Coverage**: All features and functionality documented
-- **Multi-Audience**: Appropriate content for users, developers, and administrators
-- **Practical Examples**: Real-world usage scenarios and code examples
-- **Troubleshooting**: Solutions to common issues and problems
-- **Up-to-date Information**: Current with latest platform version
+This project is licensed under the MIT License. See the main repository for details.
 
 ---
 
-**Welcome to TasteStack! We hope this documentation helps you get the most out of our recipe sharing platform.** 🍽️✨
+**Happy Coding!** 🍽️✨
+
+*Last Updated: December 2024*

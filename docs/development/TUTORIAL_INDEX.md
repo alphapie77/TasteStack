@@ -30,7 +30,7 @@ Welcome to the comprehensive tutorial collection for TasteStack! This guide will
 - Database transactions
 - Custom managers and methods
 
-### 3. [React Guide](./REACT_GUIDE.md) ⚛️
+### 3. [React Guide](../frontend/REACT_GUIDE.md) ⚛️
 **Complete React development guide**
 - React fundamentals and JSX
 - Components and props
@@ -62,7 +62,7 @@ Welcome to the comprehensive tutorial collection for TasteStack! This guide will
 1. Start with [SQLite Guide](./SQLITE_GUIDE.md) - Learn database basics
 2. Read [Django ORM Guide](./DJANGO_ORM_GUIDE.md) - Understand how Django works with databases
 3. Follow [Complete Tutorial](./COMPLETE_TUTORIAL.md) sections 1-6 - Build the backend
-4. Study [React Guide](./REACT_GUIDE.md) - Learn frontend development
+4. Study [React Guide](../frontend/REACT_GUIDE.md) - Learn frontend development
 5. Complete [Complete Tutorial](./COMPLETE_TUTORIAL.md) sections 7-10 - Build the frontend and deploy
 
 ### For Backend Developers
@@ -71,7 +71,7 @@ Welcome to the comprehensive tutorial collection for TasteStack! This guide will
 3. [SQLite Guide](./SQLITE_GUIDE.md) - Optimize database performance
 
 ### For Frontend Developers
-1. [React Guide](./REACT_GUIDE.md) - Master React development
+1. [React Guide](../frontend/REACT_GUIDE.md) - Master React development
 2. [Complete Tutorial](./COMPLETE_TUTORIAL.md) sections 7-8 - Learn API integration
 3. [Complete Tutorial](./COMPLETE_TUTORIAL.md) section 9 - Handle media files
 
