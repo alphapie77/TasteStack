@@ -1,53 +1,60 @@
-# TasteStack Documentation
+# 📚 TasteStack Documentation
 
-Welcome to the TasteStack Recipe Sharing Platform documentation! This directory contains comprehensive guides and documentation for users, developers, and administrators.
+Welcome to the comprehensive documentation for TasteStack - A Recipe Sharing Platform.
 
-## 📚 Documentation Index
+## 📖 Documentation Structure
 
-### For Users
-- **[User Manual](USER_MANUAL.md)** - Complete guide for using TasteStack platform
-  - Getting started and account setup
-  - Recipe discovery and browsing
-  - Creating and sharing recipes
-  - Social features and community interaction
-  - Mobile usage and accessibility features
+### 🚀 Getting Started
+- [Installation Guide](setup/INSTALLATION_GUIDE.md) - Complete setup instructions
+- [Quick Start](QUICK_START.md) - Get running in 5 minutes
+- [Project Structure](PROJECT_STRUCTURE.md) - Project organization
+
+### 🏗️ Architecture & Development
+- [Backend Guide](backend/BACKEND_GUIDE.md) - Django REST API documentation
+- [Django ORM Guide](DJANGO_ORM_GUIDE.md) - Database operations
+- [React Guide](REACT_GUIDE.md) - Frontend development
+- [API Documentation](api/API_REFERENCE.md) - Complete API reference
+
+### 🔧 Development Resources
+- [Complete Tutorial](COMPLETE_TUTORIAL.md) - Step-by-step guide
+- [SQLite Guide](SQLITE_GUIDE.md) - Database setup
+- [Tutorial Index](TUTORIAL_INDEX.md) - Learning path
+
+### 🚀 Deployment
+- [Deployment Guide](DEPLOYMENT_GUIDE.md) - Production deployment
+- [Frontend Deployment](FRONTEND_DEPLOYMENT.md) - Frontend hosting
+- [Deployment Status](DEPLOYMENT_STATUS.md) - Current status
+
+### 👥 User Documentation
+- [User Manual](USER_MANUAL.md) - End-user guide
+- [Project Report](PROJECT_REPORT.md) - Technical overview
+
+### 📁 Organized Structure
+Documentation is now organized into logical folders:
+- **setup/**: Installation and setup guides
+- **backend/**: Backend development documentation  
+- **api/**: API reference and examples
+- **deployment/**: Production deployment guides
+- **architecture/**: System design and structure
+- **user/**: End-user documentation
+- **Root level**: Core tutorial and reference files
+
+## 📋 Quick Navigation
 
 ### For Developers
-- **[Installation Guide](INSTALLATION_GUIDE.md)** - Complete setup guide for development and production
-  - Quick start instructions
-  - Development environment setup
-  - Production deployment guide
-  - Configuration options and troubleshooting
+1. Start with [Installation Guide](setup/INSTALLATION_GUIDE.md)
+2. Read [Backend Guide](backend/BACKEND_GUIDE.md)
+3. Check [API Documentation](api/API_REFERENCE.md)
+4. Follow [Complete Tutorial](COMPLETE_TUTORIAL.md)
 
-- **[Project Report](PROJECT_REPORT.md)** - Comprehensive technical documentation
-  - Project summary and objectives
-  - Technology stack details
-  - Architecture overview
-  - Implementation details
+### For Deployers
+1. Review [Deployment Guide](DEPLOYMENT_GUIDE.md)
+2. Check [Frontend Deployment](FRONTEND_DEPLOYMENT.md)
+3. Monitor [Deployment Status](DEPLOYMENT_STATUS.md)
 
-### For Project Stakeholders
-- **[Main README](../README.md)** - Project overview and quick setup
-  - Key features and functionalities
-  - Technology stack overview
-  - Installation and running instructions
-  - Project structure and status
-
-## 🚀 Quick Links
-
-### Getting Started
-- [Quick Setup Guide](../README.md#installation--setup)
-- [User Registration Guide](USER_MANUAL.md#getting-started)
-- [Developer Setup](INSTALLATION_GUIDE.md#quick-start)
-
-### Key Features
-- [Recipe Management](USER_MANUAL.md#creating-and-sharing-recipes)
-- [Social Features](USER_MANUAL.md#social-features)
-- [User Dashboard](USER_MANUAL.md#dashboard-and-profile)
-
-### Technical Information
-- [Technology Stack](PROJECT_REPORT.md#technology-stack)
-- [System Architecture](PROJECT_REPORT.md#architecture-overview)
-- [API Documentation](PROJECT_REPORT.md#api-endpoints)
+### For Users
+1. Read [User Manual](USER_MANUAL.md)
+2. Check [Quick Start](QUICK_START.md) for basics
 
 ## 📖 Document Summaries
 

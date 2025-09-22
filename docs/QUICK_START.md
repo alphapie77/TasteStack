@@ -57,6 +57,6 @@ docker\run-postgres.bat
 ```
 
 ## 📚 More Info
-- [Full README](README.md)
-- [Docker Guide](docker/DOCKER_GUIDE.md)
+- [Full README](../README.md)
+- [Docker Guide](../docker/DOCKER_GUIDE.md)
 - [Project Structure](PROJECT_STRUCTURE.md)
