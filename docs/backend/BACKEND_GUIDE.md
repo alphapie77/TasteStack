@@ -2,129 +2,197 @@
 
 ## 🏗️ Architecture Overview
 
+# TasteStack backend follows the Model-View-Controller (MVC) pattern:
+# - Models: Define database structure and business logic
+# - Views: Handle HTTP requests and responses (API endpoints)
+# - Serializers: Convert between JSON and Python objects
+# - URLs: Route requests to appropriate views
+
 TasteStack backend is built with Django REST Framework, providing a robust API for the recipe sharing platform.
 
 ### Technology Stack
-- **Framework**: Django 5.2.1 + Django REST Framework 3.16.1
-- **Authentication**: JWT tokens (SimpleJWT)
-- **Database**: SQLite (dev) / PostgreSQL (prod)
-- **Image Processing**: Pillow
-- **CORS**: django-cors-headers
+- **Framework**: Django 5.2.1 + Django REST Framework 3.16.1  # Web framework + API toolkit
+- **Authentication**: JWT tokens (SimpleJWT)  # Stateless token-based auth
+- **Database**: SQLite (dev) / PostgreSQL (prod)  # File-based vs server database
+- **Image Processing**: Pillow  # Python imaging library for uploads
+- **CORS**: django-cors-headers  # Cross-origin requests from frontend
 
 ## 📊 Database Models
 
 ### User Management (accounts app)
 ```python
-# Custom User Model
+# Custom User Model - extends Django's built-in user
 class User(AbstractUser):
-    email = EmailField(unique=True)  # Login field
-    username = CharField(flexible validation)
-    bio = TextField(500 chars)
-    location = CharField(200 chars)
-    website = URLField
-    profile_picture = ImageField
+    email = EmailField(unique=True)  # Primary login field instead of username
+    username = CharField(flexible validation)  # Display name, not for login
+    bio = TextField(500 chars)  # User description
+    location = CharField(200 chars)  # User location
+    website = URLField  # Personal website link
+    profile_picture = ImageField  # Avatar upload
 ```
 
 ### Recipe System (recipes app)
 ```python
-class Recipe(Model):
-    title = CharField(200)
-    description = TextField
-    ingredients = JSONField  # Array format
-    instructions = JSONField  # Array format
-    prep_time = PositiveIntegerField  # Minutes
-    cook_time = PositiveIntegerField  # Minutes
-    servings = PositiveIntegerField
-    difficulty = CharField  # Easy/Medium/Hard
-    category = CharField  # 18 predefined categories
-    image = ImageField
-    author = ForeignKey(User)
+# Main Recipe model - represents a cooking recipe
+class Recipe(Model):  # Inherits from Django's Model class
+    # Basic recipe information
+    title = CharField(200)  # VARCHAR(200) in database, recipe name
+    description = TextField  # TEXT field, unlimited length recipe overview
+    
+    # JSON fields store complex data as JSON in database
+    # Example: ["2 cups flour", "1 tsp salt", "3 eggs"]
+    ingredients = JSONField  # Array of ingredient strings with quantities
+    
+    # Example: ["Mix dry ingredients", "Add eggs", "Bake 30 minutes"]
+    instructions = JSONField  # Array of step-by-step cooking instructions
+    
+    # Time fields - PositiveIntegerField only allows positive numbers
+    prep_time = PositiveIntegerField  # Preparation time in minutes (INTEGER >= 0)
+    cook_time = PositiveIntegerField  # Cooking time in minutes (INTEGER >= 0)
+    servings = PositiveIntegerField  # Number of servings (INTEGER >= 0)
+    
+    # Choice fields with predefined options
+    difficulty = CharField  # Easy/Medium/Hard skill level (VARCHAR with choices)
+    category = CharField  # Food category from 18 predefined options
+    
+    # File upload field
+    image = ImageField  # Stores recipe photo in media/recipe_images/
+    
+    # Foreign Key relationship - links to User model
+    # Creates 'author_id' column in database with foreign key constraint
+    # on_delete=CASCADE means: if user is deleted, delete their recipes too
+    author = ForeignKey(User, on_delete=CASCADE)  # Recipe creator
+    
+    # Automatic timestamp fields (commonly added)
+    created_at = DateTimeField(auto_now_add=True)  # Set once when created
+    updated_at = DateTimeField(auto_now=True)  # Updated every time saved
 ```
 
 ### Social Features (interactions app)
 ```python
 class Rating(Model):
-    user = ForeignKey(User)
-    recipe = ForeignKey(Recipe)
-    rating = PositiveIntegerField  # 1-5 stars
-    # unique_together: (user, recipe)
+    user = ForeignKey(User)  # Who rated
+    recipe = ForeignKey(Recipe)  # What was rated
+    rating = PositiveIntegerField  # 1-5 star rating
+    # unique_together: prevents duplicate ratings
 
 class Like(Model):
-    user = ForeignKey(User)
-    recipe = ForeignKey(Recipe)
-    # unique_together: (user, recipe)
+    user = ForeignKey(User)  # Who liked
+    recipe = ForeignKey(Recipe)  # What was liked
+    # unique_together: prevents duplicate likes
 
 class Comment(Model):
-    user = ForeignKey(User)
-    recipe = ForeignKey(Recipe)
-    content = TextField
-    hidden = BooleanField  # Moderation
+    user = ForeignKey(User)  # Comment author
+    recipe = ForeignKey(Recipe)  # Recipe being commented on
+    content = TextField  # Comment text
+    hidden = BooleanField  # For content moderation
 
 class Follow(Model):
-    follower = ForeignKey(User)
-    following = ForeignKey(User)
-    # unique_together: (follower, following)
+    follower = ForeignKey(User)  # User doing the following
+    following = ForeignKey(User)  # User being followed
+    # unique_together: prevents duplicate follows
 ```
 
 ## 🔗 API Endpoints
 
+# RESTful API design principles:
+# - GET: Retrieve data (safe, no side effects)
+# - POST: Create new resources
+# - PUT: Update existing resources (full update)
+# - PATCH: Partial update
+# - DELETE: Remove resources
+
 ### Authentication (`/api/auth/`)
 ```
-POST /register/           - User registration
-POST /login/              - Email-based login
-GET  /user/               - Current user profile
-PUT  /user/update/        - Update profile
-GET  /dashboard-stats/    - User statistics
-GET  /recent-activity/    - Recent activities
-GET  /profile/<id>/       - Public profile
-POST /follow/<id>/        - Follow/unfollow
-POST /forgot-password/    - Password reset
-POST /reset-password/     - Reset with token
+# User account management endpoints
+POST /register/           - Create new user account (returns JWT token)
+POST /login/              - Authenticate with email/password (returns JWT token)
+GET  /user/               - Get current authenticated user's profile
+PUT  /user/update/        - Update current user's profile information
+
+# Dashboard and social features
+GET  /dashboard-stats/    - Get user's recipe count, followers, etc.
+GET  /recent-activity/    - Get recent likes, comments on user's recipes
+GET  /profile/<id>/       - Get public profile of any user (by user ID)
+POST /follow/<id>/        - Follow or unfollow a user (toggle)
+
+# Password reset flow
+POST /forgot-password/    - Send password reset email (requires email)
+POST /reset-password/     - Reset password using token from email
 ```
 
 ### Recipes (`/api/recipes/`)
 ```
-GET    /                  - List recipes (paginated)
-POST   /                  - Create recipe
-GET    /<id>/             - Recipe details
-PUT    /<id>/             - Update recipe
-DELETE /<id>/             - Delete recipe
-POST   /<id>/rate/        - Rate recipe
-GET    /search/           - Search recipes
-GET    /my-recipes/       - User's recipes
-GET    /statistics/       - Platform stats
+# CRUD operations for recipes
+GET    /                  - List all recipes (paginated, 12 per page)
+POST   /                  - Create new recipe (requires authentication)
+GET    /<id>/             - Get single recipe details (includes ratings, likes)
+PUT    /<id>/             - Update entire recipe (owner only)
+DELETE /<id>/             - Delete recipe (owner only)
+
+# Recipe interactions
+POST   /<id>/rate/        - Rate recipe 1-5 stars (authenticated users)
+
+# Search and filtering
+GET    /search/           - Search recipes by title, ingredients, category
+                          # Query params: ?q=search_term&category=dessert&difficulty=easy
+
+# User-specific endpoints
+GET    /my-recipes/       - Get current user's recipes only
+GET    /statistics/       - Platform-wide stats (total recipes, users, etc.)
 ```
 
 ### Interactions (`/api/interactions/`)
 ```
-POST /recipes/<id>/like/              - Like recipe
-POST /recipes/<id>/unlike/            - Unlike recipe
-GET  /recipes/<id>/comments/          - Get comments
-POST /recipes/<id>/comments/add/      - Add comment
-PUT  /recipes/<id>/comments/<id>/edit/ - Edit comment
-DELETE /recipes/<id>/comments/<id>/delete/ - Delete comment
-POST /recipes/<id>/comments/<id>/hide/ - Hide comment
-GET  /comments/my-recipes/            - Comments on user's recipes
+# Like system (toggle-based)
+POST /recipes/<id>/like/              - Like a recipe (creates Like object)
+POST /recipes/<id>/unlike/            - Unlike a recipe (deletes Like object)
+
+# Comment system (full CRUD)
+GET  /recipes/<id>/comments/          - Get all comments for a recipe
+POST /recipes/<id>/comments/add/      - Add new comment to recipe
+PUT  /recipes/<id>/comments/<id>/edit/ - Edit own comment (author only)
+DELETE /recipes/<id>/comments/<id>/delete/ - Delete own comment (author only)
+
+# Comment moderation (recipe owners can hide comments)
+POST /recipes/<id>/comments/<id>/hide/ - Hide/unhide comment (recipe owner only)
+
+# User dashboard for managing interactions
+GET  /comments/my-recipes/            - Get all comments on current user's recipes
 ```
 
 ## 🔐 Security Features
 
-### Authentication
-- JWT token-based authentication
-- Access token: 60 minutes lifetime
-- Refresh token: 7 days lifetime
-- Email-based login (not username)
+### Authentication (Who are you?)
+# JWT (JSON Web Tokens) - stateless authentication
+- JWT token-based authentication  # No server-side sessions needed
+- Access token: 60 minutes lifetime  # Short-lived for security
+- Refresh token: 7 days lifetime  # Longer-lived for convenience
+- Email-based login (not username)  # More secure, harder to guess
 
-### Authorization
-- Permission classes: IsAuthenticated, AllowAny
-- Owner-only access for recipe CRUD
-- Comment moderation by recipe owners
+# How JWT works:
+# 1. User logs in with email/password
+# 2. Server validates credentials
+# 3. Server creates JWT token containing user ID
+# 4. Client stores token and sends in Authorization header
+# 5. Server validates token on each request
+
+### Authorization (What can you do?)
+# Django REST Framework permission classes
+- Permission classes: IsAuthenticated, AllowAny  # Control access to endpoints
+- Owner-only access for recipe CRUD  # Users can only edit their own recipes
+- Comment moderation by recipe owners  # Recipe authors can hide comments
+
+# Permission levels:
+# - AllowAny: Public access (recipe list, recipe details)
+# - IsAuthenticated: Logged-in users only (create recipe, comment)
+# - IsOwner: Resource owner only (edit/delete own recipes)
 
 ### Data Protection
-- XSS prevention with HTML escaping
-- Path traversal protection
-- Strong password validation
-- CORS configuration for frontend
+- XSS prevention with HTML escaping  # Prevents malicious script injection
+- Path traversal protection  # Prevents access to system files
+- Strong password validation  # Enforces password complexity
+- CORS configuration for frontend  # Controls which domains can access API
 
 ## 🔧 Configuration
 
@@ -154,16 +222,16 @@ MEDIA_URL=/media/
 
 ### Database Configuration
 ```python
-# Dynamic database switching
+# Dynamic database switching based on environment
 def get_database_config(base_dir):
-    db_engine = os.getenv('DATABASE_ENGINE', 'sqlite')
-    database_url = os.getenv('DATABASE_URL')
+    db_engine = os.getenv('DATABASE_ENGINE', 'sqlite')  # Default to SQLite
+    database_url = os.getenv('DATABASE_URL')  # Full database URL if provided
     
-    if database_url:
+    if database_url:  # Use full URL if available (production)
         return dj_database_url.parse(database_url)
-    elif db_engine == 'postgresql':
+    elif db_engine == 'postgresql':  # Use PostgreSQL config
         return get_postgresql_config()
-    else:
+    else:  # Fall back to SQLite (development)
         return get_sqlite_config(base_dir)
 ```
 
